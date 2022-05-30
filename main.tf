@@ -23,6 +23,8 @@ resource "azurerm_mysql_server" "mysql" {
   public_network_access_enabled     = true
   ssl_enforcement_enabled           = true
   ssl_minimal_tls_version_enforced  = "TLS1_2"
+
+  depends_on = [azurerm_resource_group.db-resource]
 }
 
 
@@ -38,4 +40,6 @@ resource "azurerm_redis_cache" "redis" {
 
   redis_configuration {
   }
+
+  depends_on = [azurerm_resource_group.db-resource]
 }
